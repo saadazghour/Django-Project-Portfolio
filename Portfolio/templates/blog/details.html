@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% load humanize %}
+
+{% block title %}
+    | {{ blog_details.title }}
+{% endblock  %}
+
+{% block content %}
+
+<body>
+    <main role="main">
+        <div class="album py-5 bg-light">
+            <div class="container">
+                <h3>{{ blog_details.title }}</h3>
+                {{ blog_details.pub_date | timesince }}
+                <br>
+                <img class="img-thumbnail" height=200 src="{{ blog_details.image.url}} " alt="Image Blog">
+                <br><br>
+                <div class="card">
+                    <div class="card-body">
+                        {{ blog_details.description }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+{% endblock %}

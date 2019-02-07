@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}
+    | Home
+{% endblock  %}
+
+
+{% block content %}
+
+{% load static %}
+<main role="main">
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">Welcom</h1>
+            <p class="lead text-muted">
+                Hello everyone my name is AZGHOUR SAAD i have
+                two years of Dev in institute about winforms Desktop Applications and
+                SQL server management studio ! My current focus is Back-end development
+                with Python & Django web framework & More Front-end Stuff
+                <br> you can check my account On GitHub , Link Above
+            </p>
+
+            <p>
+                <a href="mailto:saad.azghour@gmail.com" class="btn btn-primary my-2">Email Me</a>
+            </p>
+            <img src="{% static 'AZGHOUR.jpg' %}" height="400" alt="my favorite picture">
+        </div>
+    </section>
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+
+            <div class="row">
+                {% for job in jobs %}
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm">
+                            <img class="card-img-top" src="{{ job.image.url }}" alt="image job">
+                            <div class="card-body">
+                                <p class="card-text">{{ job.summary }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

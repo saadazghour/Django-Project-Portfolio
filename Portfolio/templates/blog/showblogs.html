@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% load humanize %}
+
+{% block title %}
+    | Welcom to My Blog
+{% endblock  %}
+
+
+{% block content %}
+
+<body>
+    <main role="main">
+        <section class="jumbotron text-center">
+            <div class="container">
+                <h1 class="jumbotron-heading">Welcom to My Blog</h1>
+                <p class="lead text-muted">World news</p>
+            </div>
+        </section>
+
+        <div class="album py-5 bg-light">
+            <div class="container">
+                <h1>Latest Posts</h1>
+                    <hr><br>
+                {% for blog in blogs %}
+                    <a href="{% url 'details' blog.id %}">
+                        <h3>{{ blog.title }}</h3>
+                    </a>
+                        {{ blog.pub_date | timesince }}
+                    <br>
+                    <img class="img-thumbnail" width=200 height=200 src="{{ blog.image.url }}" alt="Blog Image">
+                    <br><br>
+                        {{ blog.showing_description }}
+                    <br><br>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+</body>
+
+{% endblock %}
